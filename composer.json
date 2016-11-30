@@ -1,0 +1,26 @@
+{
+
+  "name": "azaelcodes/ab-experiments",
+  "description": "An AB Experiment package for your site experiments",
+  "keywords": ["ab test", "ab experiments", "experiments", "a/b", "ab testing"],
+  "homepage": "https://github.com/azaelcodes/ab-experiments",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Azael Garcia",
+      "homepage": "http://azaelgarcia.com",
+      "role": "Developer"
+
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "AzaelCodes\\Utils\\": "src/"
+    }
+
+  }
+
+}
