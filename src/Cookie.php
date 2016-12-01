@@ -1,4 +1,5 @@
 <?php
+namespace azaelcodes\utils\ab;
 class Cookie
 {
     const COOKIE_PATH = '/';

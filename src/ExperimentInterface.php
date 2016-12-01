@@ -1,4 +1,5 @@
 <?php
+namespace azaelcodes\utils\ab;
 interface ExperimentInterface {
 
     /**
