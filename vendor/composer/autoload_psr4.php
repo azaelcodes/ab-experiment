@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'AzaelCodes\\Utils\\' => array($baseDir . '/src'),
+    'azaelcodes\\utils\\ab' => array($baseDir . '/src'),
 );

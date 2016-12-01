@@ -1,6 +1,5 @@
 <?php
 namespace azaelcodes\utils\ab;
-
 class Experiment implements ExperimentInterface {
 
     private $experimentName;
