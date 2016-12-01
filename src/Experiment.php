@@ -1,19 +1,22 @@
 <?php
 class Experiment implements ExperimentInterface {
 
-    public function __construct()
+    private $experimentName;
+    private $variation;
+
+    public function __construct($experimentName = '')
     {
-        //Empty constructor
+        $this->experimentName = $experimentName;
     }
 
     /**
      * Create an experiment with the given name
-     * @param string $experimentName
      * @return mixed
      */
-    public function createExperiment($experimentName = 'experiment')
+    public function createExperiment()
     {
-        // TODO: Implement createExperiment() method.
+        // Check if the experiment has already been created by checking the cookie
+        //
     }
 
     /**

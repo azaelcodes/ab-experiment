@@ -3,10 +3,9 @@ interface ExperimentInterface {
 
     /**
      * Create an experiment with the given name
-     * @param string $experimentName
      * @return mixed
      */
-    public function createExperiment($experimentName = 'experiment');
+    public function createExperiment();
 
     /**
      * Choose a variation
