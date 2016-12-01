@@ -3,9 +3,10 @@ interface ExperimentInterface {
 
     /**
      * Create an experiment with the given name
+     * @param $experimentName
      * @return mixed
      */
-    public function createExperiment();
+    public function createExperiment($experimentName);
 
     /**
      * Choose a variation
@@ -14,13 +15,8 @@ interface ExperimentInterface {
     public function chooseVariation();
 
     /**
-     * Get the variation that was created during the chooseVariation process
-     * @return mixed
-     */
-    public function getVariation();
-
-    /**
-     * Save the experiment
+     * Save the experiment whether into a Cookie or database. Up to the
+     * implementing function.
      * @return mixed
      */
     public function saveExperiment();
