@@ -4,10 +4,9 @@ interface ExperimentInterface {
 
     /**
      * Create an experiment with the given name
-     * @param $experimentName
      * @return mixed
      */
-    public function createExperiment($experimentName);
+    public function createExperiment();
 
     /**
      * Choose a variation
@@ -21,5 +20,14 @@ interface ExperimentInterface {
      * @return mixed
      */
     public function saveExperiment();
+
+
+    /**
+     * Stop/Delete the experiment that is currently running. If a name is given then
+     * only delete that experiment.
+     * @param $experimentName
+     * @return mixed
+     */
+    public function stopExperiment($experimentName = null);
 
 }

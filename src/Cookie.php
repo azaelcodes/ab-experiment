@@ -24,4 +24,9 @@ class Cookie
     {
         return isset($_COOKIE[$name]) ? $_COOKIE[$name] : null;
     }
+
+    public static function destroy($key)
+    {
+        setcookie($key, '', time() - 3600);
+    }
 }

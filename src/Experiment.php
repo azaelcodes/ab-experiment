@@ -5,34 +5,35 @@ class Experiment implements ExperimentInterface {
     private $experimentName;
     private $variation;
 
-    const EXPERIMENT_NAME_KEY = 'azaelcodes/experimentName';
-    const EXPERIMENT_VARIATION_KEY = 'azaelcodes/experimentVariation';
+    const EXPERIMENT_NAME_KEY = 'ab-experimentName';
+    const EXPERIMENT_VARIATION_KEY = 'ab-experimentVariation';
+    const EXPERIMENT_STATUS_KEY = 'ab-experimentStatus';
 
-    public function __construct()
+    public function __construct($experimentName)
     {
+        if (is_null($experimentName)) {
+            throw new \Exception('You must set an experiment name when instantiating this class');
+        }
+        $this->setExperimentName($experimentName);
     }
 
     /**
-     * Create an experiment with the given name
-     *
-     * @param $experimentName
+     * Create an experiment
      * @return mixed
      */
-    public function createExperiment($experimentName = '')
+    public function createExperiment()
     {
+
         // Check if the experiment already exists, get the information from the
         // cookie if that is the case.
         if ($this->experimentExists()) {
 
             // Store the experiment data inside the class variables
-            $this->setExperimentName('-get-from-cookie');
-            $this->setVariation('-get-it-from-cookie');
+            $this->setExperimentName(Cookie::get(self::EXPERIMENT_NAME_KEY));
+            $this->setVariation(Cookie::get(self::EXPERIMENT_VARIATION_KEY));
+
             return;
-
         }
-
-        // Choose a variation
-        $this->chooseVariation();
 
         // Create the experiment and store the data
         $this->saveExperiment();
@@ -54,9 +55,27 @@ class Experiment implements ExperimentInterface {
      */
     public function saveExperiment()
     {
+        // Choose a variation
+        $this->chooseVariation();
+
         Cookie::set(self::EXPERIMENT_NAME_KEY, $this->experimentName);
         Cookie::set(self::EXPERIMENT_VARIATION_KEY, $this->variation);
     }
+
+    /**
+     * TODO : This function needs more thinking, currently not supported
+     * Stop/Delete the experiment that is currently running. If a name is given then
+     * only delete that experiment.
+     * @param $experimentName
+     * @return mixed
+     *
+     */
+    public function stopExperiment($experimentName = null)
+    {
+        if (!is_null($experimentName)) {
+        }
+    }
+
 
     /**
      *
@@ -64,7 +83,14 @@ class Experiment implements ExperimentInterface {
      */
     private function experimentExists()
     {
-        return false;
+        $experimentName = Cookie::get(self::EXPERIMENT_NAME_KEY);
+        $variation = Cookie::get(self::EXPERIMENT_VARIATION_KEY);
+
+        if (is_null($experimentName) || is_null($variation)) {
+            return false;
+        }
+
+        return true;
     }
 
     // GETTERS AND SETTERS
