@@ -1,7 +1,7 @@
 {
 
   "name": "azaelcodes/ab-experiments",
-  "description": "An AB Experiment package for your site experiments",
+  "description": "A server side AB experiments package for running AB tests on your site.",
   "keywords": ["ab test", "ab experiments", "experiments", "ab", "ab testing"],
   "homepage": "https://github.com/azaelcodes/ab-experiments",
   "license": "MIT",
