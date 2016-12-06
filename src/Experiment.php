@@ -8,6 +8,8 @@ class Experiment implements ExperimentInterface {
     const EXPERIMENT_NAME_KEY = 'ab-experimentName';
     const EXPERIMENT_VARIATION_KEY = 'ab-experimentVariation';
     const EXPERIMENT_STATUS_KEY = 'ab-experimentStatus';
+    const VARIATION_A = 0;
+    const VARIATION_B = 1;
 
     public function __construct($experimentName)
     {
@@ -60,6 +62,26 @@ class Experiment implements ExperimentInterface {
 
         Cookie::set(self::EXPERIMENT_NAME_KEY, $this->experimentName);
         Cookie::set(self::EXPERIMENT_VARIATION_KEY, $this->variation);
+    }
+
+    /**
+     * true or false if the current experiment variation is A.
+     * To be used in the front-end
+     * @return boolean
+     */
+    public function isVariationA()
+    {
+        return $this->variation == self::VARIATION_A;
+    }
+
+    /**
+     * true or false if the current experiment variation is B.
+     * To be used in the front-end
+     * @return boolean
+     */
+    public function isVariationB()
+    {
+        return $this->variation == self::VARIATION_B;
     }
 
     /**
