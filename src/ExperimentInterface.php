@@ -30,4 +30,18 @@ interface ExperimentInterface {
      */
     public function stopExperiment($experimentName = null);
 
+    /**
+     * true or false if the current experiment variation is A.
+     * To be used in the front-end
+     * @return boolean
+     */
+    public function isVariationA();
+
+    /**
+     * true or false if the current experiment variation is B.
+     * To be used in the front-end
+     * @return boolean
+     */
+    public function isVariationB();
+
 }
